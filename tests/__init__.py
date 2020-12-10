@@ -1,0 +1,1 @@
+from ..anagrams.anagrams import reverse

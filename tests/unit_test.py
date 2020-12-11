@@ -1,10 +1,15 @@
 import unittest
-from anagrams.anagrams import *
+import sys
+import pathlib
+module_path_obj = pathlib.Path(r"D:/Max's Documents/Python projects/FoxM_mentoring/Task 2 Unit tests/anagrams/")
+sys.path.append(str(module_path_obj))
+from anagrams import *
 
 typical_param = [
 	("abcd efgh", "dcba hgfe"),
 	("a1bcd efg!h", "d1cba hgf!e"),
 	("", ""),
+	("123 456", "123 456"), #  added case for numerals only
 ]
 
 
@@ -12,12 +17,13 @@ class TestAnagrams(unittest.TestCase):
 
 	def test_typical(self):
 		# self.assertEqual(reverse("a1bcd efg!h"), "d1cba hgf!e", "wrong result processing valid string")  # using parameterized tests instead
-		for p1, p2 in typical_param:
+		for inp_val, ret_val in typical_param:
 			with self.subTest():
-				self.assertEqual(p1, reverse(p2))
+				self.assertEqual(ret_val, reverse(inp_val))
 
 	def test_atypical(self):
-		self.assertEqual(None, reverse("123"), "Test for entering numbers only")
+		n: int = 123 #  integer type
+		self.assertRaises (TypeError, reverse(n), "Exception if entering non-strings")
 
 
 if __name__ == '__main__':

@@ -23,7 +23,7 @@ class TestAnagrams(unittest.TestCase):
 
 	def test_atypical(self):
 		n: int = 123 #  integer type
-		self.assertRaises (TypeError, reverse(n), "Exception if entering non-strings")
+		self.assertRaises(TypeError, reverse, n)
 
 
 if __name__ == '__main__':
